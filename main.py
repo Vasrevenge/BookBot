@@ -1,13 +1,24 @@
-filepath = str()
+import os
 
-def get_book_text(filepath):
-    with open(filepath) as f:
-        book_string = f.read()
-
-    return book_string
+file_path = str()
+# r"/home/jack/progetti/BookBot/books/frankenstein.txt"
 
 def main():
-    filepath = "~/progetti/BookBot/books/frankenstein.txt"
+    file_path = r"/home/jack/progetti/BookBot/books/frankenstein.txt"
+    content = get_book_text(file_path)
+    word_number = count_words(content)
+
+    print(word_number,"words found in the document")    
+
+def get_book_text(file_path):
+    with open(file_path) as f:
+        file_contents = f.read()
+    return file_contents
+
+def count_words(content):
+    word_list = content.split()
+    word_number = len(word_list)
+    return word_number
 
 
 main()
